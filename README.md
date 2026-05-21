@@ -16,8 +16,6 @@ React · Vite · Express · SQL Server (`mssql`) · Recharts · Canvas LTI 1.3 �
 - **Local developer authentication routes** for testing without Canvas environment
 - **Docker integration** for local SQL Server database setup
 
----
-
 ## Screenshots
 
 <details>
@@ -51,8 +49,6 @@ React · Vite · Express · SQL Server (`mssql`) · Recharts · Canvas LTI 1.3 �
     <img src="https://github.com/user-attachments/assets/9a0f4198-8f3e-4065-8f6d-eb1dc1234f58" width="700" alt="Admin Panel">
   </p>
 </details>
-
----
 
 ## My Contributions
 I co-developed the frontend components and their corresponding stylesheets, including `AdminPanel.jsx`, `Modal.jsx`, `Results.jsx`, and `Survey.jsx`, along with `AdminPanel.css`, `Modal.css`, `Results.css`, and `Survey.css` with another teammember. Additionally, I was solely responsible for designing and implementing the data visualizations in `ResultsCharts.jsx`.
