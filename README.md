@@ -12,7 +12,7 @@ React · Vite · Express · SQL Server (`mssql`) · Recharts · Canvas LTI 1.3 �
 - **Lecture filtering** based on course codes and semesters
 - **Comprehensive results dashboard** for instructors with visual charts for distribution and averages
 - **Dedicated administrator panel** for managing semesters, courses, and lectures
-- **Seamless integration with Canvas** via LTI 1.3 support
+- **Integration with Canvas** via LTI 1.3 support
 - **Local developer authentication routes** for testing without Canvas environment
 - **Docker integration** for local SQL Server database setup
 
@@ -55,7 +55,7 @@ React · Vite · Express · SQL Server (`mssql`) · Recharts · Canvas LTI 1.3 �
 ---
 
 ## My Contributions
-I co-developed the frontend components and their corresponding stylesheets, including AdminPanel.jsx, Modal.jsx, Results.jsx, and Survey.jsx, along with AdminPanel.css, Modal.css, Results.css, and Survey.css with another teammember. Additionally, I was solely responsible for designing and implementing the data visualizations in ResultsCharts.jsx.
+I co-developed the frontend components and their corresponding stylesheets, including `AdminPanel.jsx`, `Modal.jsx`, `Results.jsx`, and `Survey.jsx`, along with `AdminPanel.css`, `Modal.css`, `Results.css`, and `Survey.css` with another teammember. Additionally, I was solely responsible for designing and implementing the data visualizations in `ResultsCharts.jsx`.
 
 ## Team
 Group project — contributors include Atle, Marius, MartinN, and MartinU.
