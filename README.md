@@ -4,7 +4,7 @@
 A web application for lecture evaluation. Students can provide anonymous feedback on lectures, while lecturers can view results in a dashboard and manage semesters, courses, and lectures. Developed as a bachelor thesis, the project consists of a React/Vite frontend and an Express backend that connects to SQL Server.
 
 ## Tech
-React · Vite · Express · SQL Server (`mssql`) · Recharts · Canvas LTI 1.3 · Docker Compose
+React (Vite) · Node.js (Express) · SQL Server (mssql) · Recharts · Canvas LTI 1.3 · Docker Compose
 
 ## Features
 - **Anonymous student feedback forms** with scale questions and open-text comments
