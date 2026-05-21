@@ -1,4 +1,5 @@
-# Viggly - Continuous Course Evaluations
+# Viggly
+## Bachelor thesis: Viggly - Continuous Course Evaluations
 A web application for lecture evaluation. Students can provide anonymous feedback on lectures, while lecturers can view results in a dashboard and manage semesters, courses, and lectures. Developed as a bachelor thesis, the project consists of a React/Vite frontend and an Express backend that connects to SQL Server.
 
 ## Tech
