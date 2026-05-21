@@ -1,0 +1,425 @@
+/* 
+  .Survey definerer hovedcontaineren til spørreskjemaet.
+  Containeren bruker flexbox for å plassere innhold vertikalt med mellomrom mellom elementene.
+  Bredden tilpasses skjermen, men begrenses til maks 600px, og skjemaet sentreres automatisk på siden.
+  Det legges også til padding, avrundede hjørner, bakgrunnsfarge og skygge for å style skjemaet litt.
+  Den generelle fonten for spørreskjemaet er også definert.
+*/
+.survey {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: clamp(1rem, 2vw, 2rem);
+  background-color: #eaeffd;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+}
+
+/*
+  Stylingen på .survey-header definerer utseendet til containeren som inneholder
+  logoen og tittelen for spørreskjemaet.
+*/
+.survey-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/*
+  Dette er stylingen for logoen som ligger til venstre for overskriften.
+*/
+.survey-logo {
+  height: clamp(60px, 12vw, 100px);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/*
+  Dette er stylingen for selve tittelen på spørreskjemaet, som ligger i midten av containeren.
+*/
+.survey-title {
+  flex-grow: 1;
+  margin: 0;
+  margin-right: clamp(60px, 12vw, 100px);
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 600;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* 
+  .Question er den generelle stylingen for de tre spørsmålene i skjemaet,
+  i henhold til plasseering, avstand osv.
+*/
+
+.question {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+/* 
+  .Question label styler skriften i overskriftene for de tre spørsmålene.
+*/
+.question label {
+  margin-bottom: 0.4rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: bold;
+}
+
+/* 
+  Her styles det generelle for svarfeltene til spørsmålene; avstand mellom overskrift og svarfelt osv.
+*/
+.question select,
+.question textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* 
+  Ekstra styling kun for tekstområdet hvor studenten kan skrive en kommentar.
+*/
+.question textarea {
+  margin-top: 1rem;
+  resize: vertical;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* 
+  Styler den lille stjerna som markerer at spørsmål 1 og 2 er obligatoriske.
+*/
+.required {
+  margin-left: 4px;
+  color: red;
+  font-weight: bold;
+}
+
+/* 
+  .Custom-select styler div-wrapperen som rommer dropdown-knappen og selve menyen. 
+*/
+.custom-select {
+  position: relative;
+  width: 100%;
+}
+
+/* 
+  Denne koden styler knappen for dropdown-menyen.
+*/
+.custom-select-button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 42px;
+  margin: 0;
+  padding: 8px 10px;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  color: #222;
+  font-size: 1rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/*
+  Her styles teksten inne i dropdown-knappen, slik at denne får riktig størrelse ved behov.
+*/
+.custom-select-button span:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+/*
+  Gir rammen på dropdown-knappen en mørkere farge når brukeren holder museknappen over denne. 
+*/
+.custom-select-button:hover {
+  border-color: #555;
+}
+
+/*
+  Gir rammen på dropdown-knappen en blå farge når brukeren har klikket på den, for å indikere at den er valgt.
+*/
+.custom-select-button:focus {
+  outline: 2px solid #4d90fe;
+  outline-offset: 2px;
+}
+
+/*
+  Styler pil-ikonet som ligger til høyre i dropdown-menyen.
+*/
+.custom-select-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #333;
+  font-size: 0.75rem;
+}
+
+/* 
+  .custom-select-menu styler dropdown-menyen for riktig plassering under knappen, 
+  en scrollfunksjon for at ikke listen skal bli for lang osv. 
+*/
+.custom-select-menu {
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  max-height: 260px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 
+  Styler hvert valg inne i selve dropdown-menyen og sikrer god bredde, avstand, 
+  farge, samt indikerer at det er mulig å klikke på disse.
+*/
+.custom-select-option {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  margin: 0;
+  padding: 8px 10px;
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+  color: #222;
+  font-size: 1rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/*
+  Her styles teksten i dropdown-listen slik at denne holdes fleksibel,
+  og kan tilpasse seg tilgjengelig plass uten å ødelegge layouten.
+*/
+.custom-select-option span:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+/*
+  Fjerner bunnlinje nederst i listen så den får en ren avslutning uten ekstra skillelinje.
+*/
+.custom-select-option:last-child {
+  border-bottom: none;
+}
+
+/*
+  Gir hvert tilgjengelige valg en lys grå bakgrunn når brukeren hovrer over,
+  for å indikere at det er klikkbart.
+*/
+.custom-select-option:hover:not(:disabled) {
+  background-color: #f2f2f2;
+}
+
+/*
+  Legger på en mørkere gråfarge på deaktiverte elementer i menyen, samt et forbudt-ikon 
+  når brukeren hovrer over. Dette for å indikere utilgjengelighet.
+*/
+.custom-select-option:disabled,
+.custom-select-option.disabled {
+  background-color: #f5f5f5;
+  color: #777;
+  cursor: not-allowed;
+}
+
+/*
+  Sikrer at deaktiverte elementer ikke får noen hover-effekt, og at de fortsatt vises 
+  som utilgjengelige når brukeren holder musepekeren over dem.
+*/
+.custom-select-option:disabled:hover,
+.custom-select-option.disabled:hover {
+  background-color: #f5f5f5;
+  color: #777;
+}
+
+/* 
+  Gjør at status-teksten (besvart/utgått) står tydelig ved siden av resten av informasjonen, 
+  ikke hopper til ny linje, og beholder størrelsen sin. 
+*/
+.lecture-status {
+  margin-left: 8px;
+  flex-shrink: 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/*
+  Legger på en grønn farge på status for å indikere at forelesningen er besvart.
+*/
+.lecture-status.answered {
+  color: green;
+}
+
+/*
+  Legger på en rød farge på statusfor å indikere at forelesningen er utgått.
+*/
+.lecture-status.expired {
+  color: red;
+}
+
+/* 
+  Styler skala-alternativene som studenten kan besvare og legger disse pent i en fleksibel 
+  rad som kan brytes over flere linjer, samt jevn avstand og sentrert innhold. 
+*/
+.scale {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 0.75rem;
+}
+
+/*
+  Styler hvert enkelt skala-alternativ, bestående av en skjult radio-knapp 
+  og en litt finere layout over for å indikerer valget.
+*/
+.scale-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/*
+  Gjør at skala-alternativene får en lys grå bakgrunn med grå teksten dersom de er deaktiverte.
+*/
+.scale-option.disabled {
+  cursor: not-allowed;
+}
+
+/* 
+  Skjuler selve input-feltet (radio/checkbox) slik at bare det tilpassede skala-designet vises i stedet.
+*/
+.scale-option input {
+  display: none;
+}
+
+/*
+  Styler teksten under hvert skala-alternativ.
+*/
+.scale-text {
+  margin-top: 4px;
+  font-size: 1rem;
+}
+
+/*
+  Styler alternativ-dot'en (den litt penere radio-knappen) som indikerer valget.
+*/
+.dot {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+/*
+  Styler animasjonen og fargen på dot'en når et skala-alternativ velges.
+*/
+.scale-option.selected .dot {
+  background-color: #333;
+  transform: scale(1.2);
+}
+
+/*
+  Styler wrapperen som pakker inn selve spørreskjemaet, og sikrer at denne ikke synes når skjemaet 
+  er aktivert ved å fjerne default styling som følger med elementet.
+*/
+.survey-fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* 
+  Gjør hele fieldset halvtransparent når det er deaktivert, for å tydelig indikere 
+  for brukeren at skjemaet ikke kan brukes.
+*/
+.survey-fieldset:disabled {
+  opacity: 0.5;
+}
+
+/* 
+  Wrapper som sentrerer "send inn svar"-knappen til midten av skjermen og gjør at den tilpasser 
+  seg innholdet dynamisk. Wrapperen sørger også for melding til brukeren dersom obligatoriske 
+  felter ikke er fylt ut, i Survey.jsx.
+*/
+.submit-wrapper {
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+
+/*
+  Styler selve utseende på "send inn svar"-knappen.
+*/
+.survey-submit-button {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin: auto;
+  padding: 0.75rem;
+  background-color: #333;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/*
+  Legger på en mørkere farge dersom brukeren hovrer over knappen og denne er aktivert.
+*/
+.survey-submit-button:not(:disabled):hover {
+  background-color: #000;
+}
+
+/*
+  Legger på en lys gråfarge og gjør knappen litt transparent dersom den er deaktivert.  
+*/
+.survey-submit-button:disabled {
+  background-color: #333;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 
+  Gjør deaktiverte elementer grå og mindre synlige, for å vise brukeren at de ikke kan velges. 
+*/
+select option:disabled {
+  color: #888;
+  background-color: #f0f0f0;
+}

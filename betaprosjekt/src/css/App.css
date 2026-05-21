@@ -1,0 +1,27 @@
+
+/*
+  Denne CSS-filen setter grunnleggende stil og layout for hele Viggly som applikasjon.
+  Her er det bare litt generell css for å fjerne standard avstander som nettleseren 
+  legger til, sørge for at alt blir målt og vist likt, samt plassere hovedinnholdet 
+  midt på siden med hvit bakgrunn.
+*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #ffffff;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1rem;
+}

@@ -1,0 +1,285 @@
+
+/*
+  Dette er css for hvert enkelt admin-panel (semestre, emner og forelesninger) i admin-modalen.
+  Den definerer blant annet bakgrunn, layout og struktur for hvert panel.
+*/
+.admin-panel {
+  background: #eaeffd;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/*
+  Styrer den indre strukturen i hvert panel, sørger for at innholdet fyller tilgjengelig høyde 
+  og at det ikke går utenfor rammen.
+*/
+.admin-panel-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*
+  Koden nedenfor styler toppseksjonen i admin-panelet og legger til litt luft under.
+  Den sørger også for at elementet ikke krymper tross liten plass.
+*/
+.panel-top-actions {
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+/*
+  Styler innholdslistene og legger disse i kolonne med litt mellomrom imellom.
+  Gjør også at listen kan scrolles hvis innholdet blir for langt.
+*/
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1; 
+  overflow-y: auto;  
+  padding-right: 5px;
+}
+
+/*
+  Styler meldingen som kommer opp dersom listen er tom. 
+*/
+.empty-msg {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  padding: 8px 0;
+  font-style: italic;
+}
+
+/*
+  .list-row styler utseendet på hver rad i listen. Gir luft mellom dem, visuell stylig, avrundede kanter
+  og en regel for animasjon ved ved brukerinterasjon.
+*/
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: default;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+/* 
+  Gjør at alle liste-elementer signaliseres som klikkbare for brukeren.
+*/
+.list-row[title] {
+  cursor: pointer;
+}
+
+/*
+  Styling for når brukeren hovrer over et liste-element med musepekeren. 
+*/
+.list-row[title]:hover {
+  border-color: #4c73e6;
+  box-shadow: 0 0 0 2px rgba(76, 115, 230, 0.15);
+}
+
+/*
+  Dette er styling for å indikere at liste-elementet er valgt av brukeren og "aktivt".
+*/
+.list-row.selected {
+  border-color: #2c3dae;
+  background: #edf0fb;
+  box-shadow: 0 0 0 2px rgba(44, 61, 174, 0.2);
+}
+
+/*
+  Koden nedenfor styler teksten i hvert liste-element; font, plassering, at ikke teksten går utenfor
+  boksen osv.
+*/
+.row-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #222;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+  Stylingen for skriften med dato som knyttes til hver forelesning. 
+*/
+.row-date {
+  font-size: 11px;
+  font-weight: 400;
+  color: #888;
+}
+
+/*
+  .delete-row-btn styler det lille søppelbøtte-ikonet som ligger ved siden av hvert liste-element,
+  for å indikere at dette kan slettes. 
+*/
+.delete-row-btn {
+  background: transparent;
+  border: none;
+  color: #c0392b;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1;
+  width: auto;
+  margin: 0;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+/*
+  Styling for når brukeren hovrer over slett-knappen. 
+*/
+.delete-row-btn:hover {
+  background: #fdecea;
+}
+
+/*
+  Styler overskriften der brukeren kan legge til dato på forelesning. 
+*/
+.form-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: -4px;
+}
+
+/*
+  Dette er generell styling for de tre "legg til..."-knappene i panelene. 
+*/
+.add-button {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  padding: 8px 14px;
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #2e7d32;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 auto;
+}
+
+/*
+  Aminasjon for når brukeren hovrer over knappen. 
+*/
+.add-button:hover {
+  background-color: #c8e6c9;
+  border-color: #1b5e20;
+  color: #0d3d12;
+}
+
+/* 
+  Denne css-en styler skjemaene som brukes til å legge til semester, emner og forelesninger.
+*/
+.add-semester-form,
+.add-course-form,
+.add-lecture-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+/*
+  Denne koden styler de ulike feltene hvor brukeren kan fylle inn informasjon, før dette legges til. 
+*/
+.add-semester-form input,
+.add-course-form input,
+.add-lecture-form input,
+.add-semester-form select,
+.add-course-form select,
+.add-lecture-form select {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/*
+  Legger knappene for "legg til" og "avbryt" ved siden av hverandre, på linje. 
+*/
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+/*
+  Denne koden styler form og størrelse på de tre "legg til"- og "avbryt"-knappene i hvert skjema. 
+*/
+.add-semester-form button,
+.add-course-form button,
+.add-lecture-form button {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  width: auto;
+  margin: 0;
+}
+
+/*
+  Styler fargen på de tre "legg til"-knappene. 
+*/
+.add-form-button {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #2e7d32 !important;
+}
+
+/*
+  Endrer bakgrunnsfargen på “legg til”-knappen når brukeren holder musepekeren over den, 
+  dersom denne er aktivert.
+*/
+.add-form-button:hover:not(:disabled) {
+  background-color: #c8e6c9;
+}
+
+/*
+  Styler utseende på "legg til"-knappen dersom denne er deaktivert. 
+*/
+.add-form-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/*
+  Denne koden styler utseendet (farge) på "avbryt"-knappen i hvert skjema. 
+*/
+.cancel-form-button {
+  background: rgb(255, 232, 232);
+  color: #d82c2c;
+  border: 1px solid #d82c2c !important;
+}
+
+/*
+  Styler hoverfunksjonen for "avbryt"-knappen, dersom brukeren holder musepekeren over. 
+*/
+.cancel-form-button:hover {
+  background: rgb(255, 200, 200);
+}

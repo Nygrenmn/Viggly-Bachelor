@@ -1,0 +1,472 @@
+/*
+  Denne css-filen har 7 seksjoner: en for overordnet layout og header, en for dropdown selectorene, 
+  en for knapper, en for stats og diagrammer, en for kommentarfeltet, en for responsiv design, og 
+  til slutt en for inne i uttskriften.
+*/
+
+/*
+  OVERORDNET LAYOUT OG HEADER:
+*/ 
+
+/* 
+  .results-page definerer hovedcontaineren for resultatsiden.
+  Den bruker flexbox vertikalt for å stable elementene, og sentreres automatisk på siden.
+  Det er også lagt til bakgrunnsfarge, avrundede hjørner og en skygge.
+*/
+.results-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #eaeffd;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+  Nullstiller marger og setter en skriftstørrelse for hovedoverskriften.
+*/
+.results-page h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* 
+  Plasserer tittel og elementer på samme linje med en fast avstand.
+*/
+.results-title-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+
+/* 
+  Sikrer at logoen ikke krymper, og bruker clamp for at høyden skal tilpasses
+  skjermstørrelsen dynamisk mellom 60px og 100px.
+*/
+.results-logo {
+  flex-shrink: 0;
+  width: auto;
+  height: clamp(60px, 12vw, 100px);
+}
+
+/* 
+  Definerer header-området som en vertikal flexbox med gap mellom elementene.
+*/
+.results-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 
+  Innholdet i header-row spres til høyre og venstre kant og tillater at elementene 
+  hopper ned på neste linje ved bruk av flex-wrap når det er plassmangel.
+*/
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* 
+  Samler elementene på venstre side av headeren horisontalt med en jevn avstand.
+*/
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* 
+  Eget flex-felt for elementene til høyre i header.
+*/
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+
+/*
+   DROPDOWN SELECTORENE:
+/* 
+  En styler for containeren for rullegardinmenyen slik at det står fint på linje.
+*/
+.selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* 
+  Styler selve select-menyen med en fast bredde, innvendig luft, og litt avrundede kanter.
+  ellipsis sørger for at for lang tekst kuttes med tre prikker slikt: (...).
+*/
+.selector select {
+  width: 175px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 
+  Deaktiverer klikk, endrer bakgrunn, tekstfargen og musepekeren 
+  for å gi et tydelig visuelt signal om at menyen er låst.
+*/
+select:disabled {
+  pointer-events: none;
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+
+/*
+   KNAPPER:
+*/
+
+/* 
+  Generell styling for knapper. Sentrerer innhold, setter faste rammer og 
+  lager en effekt ved hovring over knappene.
+*/
+.action-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+/* 
+  Gjør knappen halvtransparent og endrer musepekeren når knappen er disabled.
+*/
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* 
+  Farge på PDF-knappen.
+*/
+.download-pdf-btn {
+  background: #2c3dae;
+  color: white;
+}
+
+/* 
+  Gjør blåfargen på PDF-knappen mørkere når man hovrer over den, 
+  så lenge den ikke er deaktivert.
+*/
+.download-pdf-btn:hover:not(:disabled) {
+  background: #1f2a80;
+}
+
+/* 
+  Admin-knappen stylet.
+*/
+.admin-button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #444;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* 
+  Gjør admin-knappen nesten helt svart ved hovring for å indikere klikkbarhet.
+*/
+.admin-button:hover {
+  background: #222;
+}
+
+
+/*
+   STATS OG DIAGRAMMER
+*/
+
+/* 
+  Bruker grid til å fordele statistikkfeltene i 3 like brede kolonner.
+*/
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* 
+  Styler hvert enkelt statistikkkort med hvit bakgrunn, tynn ramme og sentrert innhold.
+  min-height sikrer at kortene beholder en fin proporsjon selv med lite innhold med 100 piksler.
+*/
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  padding: 1.2rem;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* 
+  Styler den overskriften inne i statistikkkortet.
+*/
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* 
+  Styler verdien i kortet for tydelighet.
+*/
+.card p {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* 
+  Lager et rutenett med grid for diagrammer, opprinnelig fordelt over 3 kolonner.
+*/
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+
+/*
+  KOMMENTARFELTET
+*/
+
+/* 
+  Skille kommentarfeltet fra diagrammene med margin top.
+*/
+.comments {
+  margin-top: 1rem;
+}
+
+/* 
+  Sørger for avstand under overskriften for kommentarer.
+*/
+.comments h2 {
+  margin-bottom: 1rem;
+}
+
+/* 
+  Kommentarlisten begrenset til 400px og legger til scrollbar ved bruk av overflow-y,
+  slik at siden ikke blir uendelig lang hvis det er mange tilbakemeldinger.
+*/
+.comments-list {
+  max-height: 400px;
+  padding-right: 8px;
+  overflow-y: auto;
+}
+
+/* 
+  Styler den enkelte kommentarblokken. Borderleft for å separere kommentarene på en fin måte.
+*/
+.comment {
+  margin-bottom: 0.8rem;
+  padding: 0.8rem 1rem;
+  background-color: #ffffff;
+  border-left: 5px solid #999;
+  border-radius: 8px;
+}
+
+/* 
+  Tvinger lange ord i en kommentar til å bryte linje (for eksempel om noen tuller med masse tegn),
+  slik at de ikke ødelegger layouten eller flyter ut av boksen.
+*/
+.comment p {
+  margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* 
+  Gråfarget datostempel style.
+*/
+.date {
+  margin-bottom: 0.3rem;
+  color: #777;
+  font-size: 0.75rem;
+}
+
+/* 
+  Margin mellom forelesning/dato og kommentar.
+*/
+.comment p + p {
+  margin-top: 0.3rem;
+}
+
+/*
+  RESPONSIV DESIGN
+*/
+
+/* 
+  For skjermer som er 800px brede eller mindre, som mobil og nettbrett:
+*/
+@media (max-width: 800px) {
+  /* Tvinger diagrammene over i kun en enkel kolonne i stedet for tre. */
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tvinger statistikkkortene over i kun en enkel kolonne. */
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Endrer header-row til en vertikal kolonne, og venstrestiller innholdet med flex-start. */
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* Sørger for at selector strekker seg i full bredde */
+  .header-left, 
+  .selector {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  /* Lar rullegardinmenyen ta opp hele den tilgjengelige bredden på skjermen. */
+  .selector select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Gjør knappene om til full bredde for å gjøre dem mer bruksvennlig. */
+  .action-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Sentrerer header right og gir den litt luft i toppen. */
+  .header-right {
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  /* Admin-knappen gjøres om til full bredde for å gjøre den mer bruksvennlig */
+  .admin-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/*
+  INNE I UTSKRIFT
+*/
+
+/* 
+  Egne regler som trer i kraft når siden skal skrives ut eller lagres som PDF:
+*/
+@media print {
+  /* Tvinger bakgrunnen til å bli helt hvit for å spare blekk. */
+  body {
+    background: white !important;
+  }
+
+  /* Skjuler elementer som ikke er relevante på papir som knapper og dropdownmenyene. */
+  .download-pdf-btn,
+  .admin-button,
+  .selector {
+    display: none !important;
+  }
+
+  /* Fjerner skygger, avrundede hjørner og bakgrunn slik at utskriften blir ren. */
+  .results-page {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Sentrerer headeren og tekst på utskriften. */
+  .results-header {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Sentrerer h1 tittelen og legger til en margin i bunnen. */
+  .results-header h1 {
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  /* Endrer diagram-gridet vertikalt, listet under hverandre. */
+  .charts-grid {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* Forhindrer at et statistikkkort blir delt i to over to forskjellige sider. */
+  .card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  /* Overstyrer eventuelle dynamiske javascript-størrelser på diagrammene 
+     slik at de rendres med en fast størrelse på utskriften. */
+  .recharts-responsive-container {
+    width: 100% !important;
+    height: 250px !important;
+  }
+
+  /* Strekker kommentarfeltene ut i full bredde for utskrift. */
+  .comments {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  /* Fjerner makshøyde og scrollbar på kommentarene, slik at all 
+     kommentartekst printes og blir synlige på papiret. */
+  .comments-list {
+    max-height: none !important;
+    padding-right: 0 !important;
+    overflow: visible !important;
+  }
+}

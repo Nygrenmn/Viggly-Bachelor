@@ -1,0 +1,123 @@
+
+/* 
+  Denne css-en gjelder for den generelle styligen av posisjonering, størrelse og plassering
+  for overlayet som modal-vinduet åpnes i. Dette sørger også for å dimme bakgrunnen på 
+  resten av skjermen når modalen åpnes. 
+*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* 
+  Dette er stylingen for selve utseendet på modalvinduet som vises oppå overlayet, 
+  inkludert størrelse, bakgrunn og animasjon for dette. 
+*/
+.modal-box.admin-modal {
+  position: relative;
+  width: 90vw;
+  height: 85vh;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+  animation: popIn 0.2s ease-out;
+}
+
+/*
+  Keyframes for fadeIn-animasjonen som gradvis øker opacity fra 0 til 1.
+  Denne brukes at modal-overlay skal dukke opp på en myk måte.
+*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/*
+  Fungerer på samme måte som koden ovenfor, men sørger på sin side for at selve admin-panelet
+  animeres inn mykt oppå overlayet.
+*/
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/*
+  Styler den generelle overskriften til adminpanelet.
+*/
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*
+  Koden nedenfor styler utseendet på panelet. Her brukes grid-funksjon for å dele panelet 
+  inn i tre kolonner (semestre, emner og forelesninger) med lik bredde og luft i mellom.
+*/
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  height: calc(100% - 60px);
+}
+
+/*
+  Styler overskriften til hvert individuelle panel (semestre, emner og forelesninger).
+*/
+.panel-header {
+  text-align: center;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/*
+  Styler den lille meldingen som dukker opp ved siden av overskriftene for å indikere 
+  at innholdet som vises i panelet er basert på brukerens filtreringsvalg.
+*/
+.filter-badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: #2c3dae;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/*
+  .modal-close er css som styler knappen for å lukke panelet, og gå tilbake til hovedsiden.
+*/
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  font-size: 25px;
+  line-height: 1;
+  color: black;
+  cursor: pointer;
+}
+
+/*
+  Legger på en liten animasjon på lukke-knappen når denne hovres over av brukeren.
+*/
+.modal-close:hover {
+  background: transparent;
+  color: black;
+  opacity: 1;
+}
